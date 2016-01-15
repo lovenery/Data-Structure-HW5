@@ -182,14 +182,17 @@ void kruskal(int *a)
         // if v==u , loop exist
         if(v!=u)
         {
+            // success connect!!!
             noOfEdges++;
-            //cout<<"edge connect "<<temp1<<"->"<<temp2<<": "<<min<<endl;
+            cout<<"edge connect "<<temp1<<"->"<<temp2<<": "<<min<<endl;
             total+=min;
             parent[v] = u;
+
+            kruskal_ans[temp1*10+temp2]=kruskal_matrix[temp1*10+temp2];
+            kruskal_ans[temp2*10+temp1]=kruskal_matrix[temp2*10+temp1];
+            dumparr(kruskal_ans);
         }
-        kruskal_ans[temp1*10+temp2]=kruskal_matrix[temp1*10+temp2];
-        kruskal_ans[temp2*10+temp1]=kruskal_matrix[temp2*10+temp1];
-        dumparr(kruskal_ans);
+        // no matter what , clean the data
         kruskal_matrix[temp1*10+temp2] = 999;
         kruskal_matrix[temp2*10+temp1] = 999;
     }
